@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="TMCSのサービスメニュー。印刷・デザイン、Web・IT、広報・調査、研修・セミナーなど、お困りごとをワンストップでサポートします。">
+<title>TMCS サービスメニュー</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg-color: #f4f4f4;
+    --paper-color: #ffffff;
+    --text-color: #4a3b32; /* 濃いブラウン系のテキスト */
+    --gold: #b89759;      /* ゴールド */
+    --border-color: #3b1f13; /* 深いダークブラウン */
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: 'Noto Serif JP', serif;
+    -webkit-font-smoothing: antialiased;
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    min-height: 100vh;
+  }
+
+  /* メニューの台紙（用紙） */
+  .menu-paper {
+    background-color: var(--paper-color);
+    width: 100%;
+    max-width: 800px;
+    min-height: 1000px;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: row;
+    overflow: hidden;
+    animation: fadeIn 1.5s ease-out forwards;
+  }
+
+  /* 左右の飾り枠 */
+  .side-border {
+    width: 80px;
+    background-color: var(--border-color);
+    flex-shrink: 0;
+    /* ゴールドの飾り模様（SVGを背景に） */
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='100' viewBox='0 0 40 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M20 5 L20 95 M10 20 Q20 30 30 20 Q20 10 10 20 Z M10 80 Q20 90 30 80 Q20 70 10 80 Z M15 40 Q20 50 25 40 Q20 30 15 40 Z M15 60 Q20 70 25 60 Q20 50 15 60 Z' stroke='%23b89759' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+    background-repeat: repeat-y;
+    background-position: center top;
+  }
+
+  /* 中央のコンテンツエリア */
+  .content {
+    flex-grow: 1;
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* 見出し（MENU） */
+  h1 {
+    font-size: 48px;
+    font-weight: 400;
+    letter-spacing: 0.15em;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+    color: var(--text-color);
+  }
+
+  /* 装飾ライン（タイトル下など） */
+  .ornament-line {
+    width: 100%;
+    max-width: 300px;
+    height: 30px;
+    margin-bottom: 50px;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 300 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 15 L120 15 Q135 15 150 5 Q165 15 180 15 L300 15' stroke='%23b89759' stroke-width='1.5' fill='none'/%3E%3Cpath d='M150 15 L140 25 Q150 30 160 25 Z' stroke='%23b89759' stroke-width='1' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+  
+  .ornament-line-small {
+    width: 100%;
+    max-width: 200px;
+    height: 20px;
+    margin: 40px 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0 10 L80 10 Q100 10 100 0 Q100 10 120 10 L200 10' stroke='%23b89759' stroke-width='1' fill='none'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  /* セクション（各カテゴリ） */
+  .section {
+    margin-bottom: 45px;
+    text-align: center;
+    width: 100%;
+  }
+
+  /* カテゴリ名（ゴールド系） */
+  .section-title {
+    color: var(--gold);
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 0.2em;
+    margin-bottom: 12px;
+  }
+  
+  /* サブタイトル（英語部分） */
+  .section-subtitle {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    opacity: 0.6;
+    margin-bottom: 20px;
+  }
+
+  /* メニュー項目 */
+  .item {
+    font-size: 15px;
+    line-height: 1.8;
+    letter-spacing: 0.1em;
+    margin-bottom: 6px;
+  }
+
+  /* 太字強調 */
+  .item strong {
+    font-weight: 700;
+  }
+
+  /* フッター */
+  .footer {
+    margin-top: auto;
+    padding-top: 60px;
+    text-align: center;
+  }
+
+  .guarantees {
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    margin-bottom: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .closing {
+    font-size: 12px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* スマホ対応 */
+  @media (max-width: 600px) {
+    .side-border { width: 30px; }
+    .content { padding: 40px 20px; }
+    h1 { font-size: 32px; }
+    .section-title { font-size: 18px; }
+    .item { font-size: 14px; }
+  }
+
+  /* 印刷時 */
+  @media print {
+    body { background-color: #fff; padding: 0; }
+    .menu-paper { box-shadow: none; max-width: none; }
+    .side-border { 
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+    .ornament-line, .ornament-line-small {
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="menu-paper">
+  <div class="side-border"></div>
+  
+  <div class="content">
+    <h1>MENU</h1>
+    <div class="ornament-line"></div>
+
+    <!-- 印刷・デザイン -->
+    <div class="section">
+      <div class="section-title">印刷・デザイン</div>
+      <div class="section-subtitle">PRINT & DESIGN</div>
+      <div class="item">機関紙・議案書<strong>制作</strong></div>
+      <div class="item">名刺<strong>デザイン</strong>・名刺<strong>制作</strong></div>
+      <div class="item">組合ロゴの企画・制作</div>
+    </div>
+
+    <!-- Web・IT -->
+    <div class="section">
+      <div class="section-title">Ｗｅｂ・ＩＴ</div>
+      <div class="section-subtitle">WEB & IT</div>
+      <div class="item">ホームページ制作・リニューアル</div>
+      <div class="item">インターネットアンケート・申し込みフォーム</div>
+      <div class="item">組合ブログ・組合アプリ導入</div>
+    </div>
+
+    <!-- 広報・調査 -->
+    <div class="section">
+      <div class="section-title">広報・調査</div>
+      <div class="section-subtitle">PR & RESEARCH</div>
+      <div class="item">DM発送<strong>代行</strong></div>
+      <div class="item">アンケート<strong>調査</strong></div>
+      <div class="item">ノベルティ<strong>制作</strong></div>
+    </div>
+
+    <!-- 研修・セミナー -->
+    <div class="section">
+      <div class="section-title">研修・セミナー</div>
+      <div class="section-subtitle">TRAINING & SEMINAR</div>
+      <div class="item">新入組合員<strong>研修セミナー</strong></div>
+      <div class="item">著名人講演の手配</div>
+      <div class="item">運動会企画・運営</div>
+    </div>
+
+    <div class="ornament-line-small"></div>
+    
+    <div class="footer">
+      <div class="guarantees">
+        <div>最適な専門会社をコーディネート</div>
+        <div>ワンストップサービス</div>
+      </div>
+      <div class="closing">「何から頼めばいいか分からない」ご相談こそ、私たちにお任せください。</div>
+    </div>
+  </div>
+
+  <div class="side-border"></div>
+</div>
+
+</body>
+</html>
